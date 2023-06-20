@@ -1,29 +1,63 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @question %>
+<div class="md:grid grid-cols-4 p-4 gap-4">
+  <div class="col-span-3 flex flex-col gap-4">
+    <div id="question" class="w-full bg-base-100 p-4 rounded">
+      <div class="flex gap-2">
+        <div class="avatar">
+          <div class="w-12 h-12 rounded-full">
+            <%= image_tag("https://pbs.twimg.com/profile_images/1639996872071974913/PPhYEW-B_400x400.jpg") %>
+          </div>
+        </div>
+        <div class="flex flex-col gap-1">
+          <p class="text-primary">higakijin</p>
+          <p class="text-gray-400 text-sm"><%= l(@question.created_at, format: :long) %></p>
+        </div>
+        <div class="ml-auto">
+          <i class="fa-regular fa-message"></i>
+          <%= @question.answers.length %>
+        </div>
+      </div>
+      <div class="py-4 px-2">
+        <%= @question.title %>
+      </div>
+      <% if !user_signed_in? %>
+        <hr />
+        <div class="px-2 py-4">
+          <%= link_to("ログインして回答", new_user_session_path, class: "btn btn-primary btn-sm w-full") %>
+        </div>
+      <% end %>
+    </div>
 
-<div>
-  <%= link_to "Edit this question", edit_question_path(@question) %> |
-  <%= link_to "Back to questions", questions_path %>
+    <div id="answers" class="w-full bg-base-100 p-4 rounded">
+      <p class="font-bold text-lg">回答（<%= @question.answers.length %>件）</p>
+      <div class="py-4">
+        <% @question.answers.each do |answer| %>
+          <div class="p-2">
+            <div class="flex gap-2">
+              <div class="avatar">
+                <div class="w-12 h-12 rounded-full">
+                  <%= image_tag("https://pbs.twimg.com/profile_images/1639996872071974913/PPhYEW-B_400x400.jpg") %>
+                </div>
+              </div>
+              <div class="flex flex-col gap-1">
+                <p class="text-primary">higakijin</p>
+                <p class="text-gray-400 text-sm"><%= l(@question.created_at, format: :long) %></p>
+              </div>
+            </div>
+            <div class="py-4 px-2">
+              <%= answer.content %>
+            </div>
+            <hr />
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-  <%= button_to "Destroy this question", @question, method: :delete %>
+
+
+  <div>
+    <%= link_to("質問する", new_question_path, class: "btn btn-primary w-full") %>
+  </div>
 </div>
-
-回答する
-
-<%= form_with(model: [@question, @question.answers.new]) do |f| %>
-  <p>
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-
-<p class="text-2xl">All answers</p>
-<% @question.answers.each do |answer| %>
-  <%= answer.content %>
-  <br>
-<% end %>
