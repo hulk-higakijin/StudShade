@@ -5,6 +5,7 @@ ruby '3.1.3'
 
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
+gem 'devise'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'pg', '~> 1.1'
@@ -22,6 +23,7 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'rubocop', require: false
+  gem 'rubocop-performance'
   gem 'rubocop-rails', require: false
 end
 
