@@ -1,16 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Questions</h1>
+<div id="questions" class="md:grid grid-cols-4 p-4">
+  <div class="col-span-3">
+    <div class="w-full bg-base-100 p-4 rounded">
+      <% @questions.each do |question| %>
+        <%= link_to(question_path(question)) do %>
+          <div class="p-2 flex flex-col">
+            <h2 class="link link-hover link-primary font-semibold"><%= question.title %></h2>
+            <p class="text-sm"><%= question.answers.length %></p>
+          </div>
+          <hr />
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
-<div id="questions">
-  <% @questions.each do |question| %>
-    <%= render question %>
-    <p>
-      <%= link_to "Show this question", question %>
-    </p>
-    <br />
-
-  <% end %>
+  <div>
+    ここに質問の一覧を表示
+    <i class="fa-regular fa-bell"></i>
+  </div>
 </div>
 
 <%= link_to "New question", new_question_path %>

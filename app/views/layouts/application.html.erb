@@ -11,7 +11,13 @@
   </head>
 
   <body>
-    <%= render("layouts/navbar") %>
-    <%= yield %>
+    <div class="container max-w-4xl mx-auto">
+      <%= render("layouts/navbar") %>
+    </div>
+    <div class="bg-base-200">
+      <div class="container max-w-4xl mx-auto">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

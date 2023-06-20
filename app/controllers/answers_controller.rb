@@ -8,7 +8,6 @@ class AnswersController < ApplicationController
       @question = @answer.question
       render 'questions/show'
     end
-
   end
 
   private
