@@ -1,13 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<div id="questions" class="md:grid grid-cols-4 p-4">
+<div id="questions" class="md:grid grid-cols-4 p-4 gap-4">
   <div class="col-span-3">
     <div class="w-full bg-base-100 p-4 rounded">
       <% @questions.each do |question| %>
         <%= link_to(question_path(question)) do %>
-          <div class="p-2 flex flex-col">
+          <div class="p-2 flex flex-col gap-2">
             <h2 class="link link-hover link-primary font-semibold"><%= question.title %></h2>
-            <p class="text-sm"><%= question.answers.length %></p>
+            <div class="text-xs text-gray-500 flex gap-2">
+              <p>
+                <i class="fa-regular fa-message"></i>
+                <%= question.answers.length %>
+              </p>
+              <%= l(question.created_at, format: :short) %>
+            </div>
           </div>
           <hr />
         <% end %>
@@ -16,9 +22,6 @@
   </div>
 
   <div>
-    ここに質問の一覧を表示
-    <i class="fa-regular fa-bell"></i>
+    <%= link_to("質問する", new_question_path, class: "btn btn-primary w-full") %>
   </div>
 </div>
-
-<%= link_to "New question", new_question_path %>
