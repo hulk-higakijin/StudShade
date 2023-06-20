@@ -9,23 +9,5 @@
     <%= question.content %>
   </p>
 
-  <p>
-    <strong>User:</strong>
-    <% question.answers.each do |answer| %> 
-      <%= answer.content %>
-    <% end %>
-  </p>
-
 </div>
 
-回答する
-
-<%= form_with() do |f| %>
-  <p>
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>

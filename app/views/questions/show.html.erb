@@ -8,3 +8,22 @@
 
   <%= button_to "Destroy this question", @question, method: :delete %>
 </div>
+
+回答する
+
+<%= form_with(model: [@question, @question.answers.new]) do |f| %>
+  <p>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+
+<p class="text-2xl">All answers</p>
+<% @question.answers.each do |answer| %>
+  <%= answer.content %>
+  <br>
+<% end %>
