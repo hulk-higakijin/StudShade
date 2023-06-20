@@ -4,8 +4,8 @@ class AnswersController < ApplicationController
   end
 
   private
-  
+
     def answer_params
-      params.require(:answer).permit(:content, :question_id)
+      params.require(:answer).permit(:content)
     end
 end
