@@ -29,5 +29,6 @@ group :development, :test do
 end
 
 group :development do
+  gem 'any_login'
   gem 'web-console'
 end
