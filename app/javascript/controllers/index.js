@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import TextareaAutogrow from 'stimulus-textarea-autogrow'
+application.register('textarea-autogrow', TextareaAutogrow)
