@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
       redirect_to @answer.question, notice: 'Answer was successfully created.'
     else
       @question = @answer.question
-      render 'questions/show'
+      redirect_to @question, alert: @answer.errors.full_messages.join(', ')
     end
   end
 
