@@ -13,15 +13,15 @@
 
   <div>
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "input input-bordered input-primary w-full my-1" %>
   </div>
 
   <div>
     <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, class: "textarea textarea-primary w-full my-1", rows: 10 %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "投稿", class: "btn btn-primary" %>
   </div>
 <% end %>

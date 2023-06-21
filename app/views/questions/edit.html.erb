@@ -1,10 +1,11 @@
-<h1>Editing question</h1>
+<div class="container max-w-md mx-auto p-4">
+  <h1 class="font-bold text-lg py-2">Editing question</h1>
 
-<%= render "form", question: @question %>
+  <%= render "form", question: @question %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this question", @question %> |
-  <%= link_to "Back to questions", questions_path %>
+  <div>
+    <%= link_to "←質問に戻る", question_path(@question), class: "link link-primary link-hover" %>
+  </div>
 </div>
