@@ -25,6 +25,11 @@
         <div class="px-2 py-4">
           <%= link_to("ログインして回答", new_user_session_path, class: "btn btn-primary btn-sm w-full") %>
         </div>
+      <% elsif (current_user.answers & @question.answers).present? %>
+        <hr />
+        <div class="px-2 py-4 text-center">
+          回答済み
+        </div>
       <% elsif current_user.id != @question.user_id %>
         <hr />
         <%= form_with(model: [@question, Answer.new], class: "px-2 py-4 flex gap-2") do |f| %>
